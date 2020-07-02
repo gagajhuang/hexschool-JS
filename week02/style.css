@@ -1,0 +1,34 @@
+body{
+  font-family: 'Noto Sans TC',"Microsoft JhengHei","Source Sans Pro", sans-serif;
+}
+
+article,img{
+  margin:0 auto;
+  width:100%;
+}
+p{
+  word-break: break-word;
+}
+article{
+  max-width:1200px;
+}
+h1{
+  font-size:25px;
+}
+.productblock{
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.productlist{
+  max-width:300px;
+  width:30%;
+  margin:1%;
+}
+/* .productlist + .productlist{
+  margin-left:5%;
+} */
+.productlist img{
+  min-height:300px;
+}
