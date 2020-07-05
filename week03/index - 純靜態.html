@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Week3 - 產品管理頁面</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<main class="container">
+		<article>
+			<div class="mt-4">
+				<button class="btn btn-primary" data-toggle="modal" data-target="#productModal">建立新產品</button>
+			</div>
+			<div class="mt-4">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>分類</th>
+							<th>產品名稱</th>
+							<th>原價</th>
+							<th>售價</th>
+							<th>是否上架</th>
+							<th>編輯</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>上衣</td>
+							<td>氣質無袖雪紡</td>
+							<td>$590</td>
+							<td>$390</td>
+							<td>啟用</td>
+							<td>
+								<!-- <div class="btn-group"> -->
+								<div>
+									<button class="btn btn-outline-primary">編輯</button>
+									<button class="btn btn-outline-danger">刪除</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<!-- Modal -->
+			<!-- 產品資訊 -->
+			<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-xl" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header bg-dark text-white">
+			        <h5 class="modal-title" id="exampleModalLabel">新增產品</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true" class="text-white">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <div>
+			        	<form role="form" class="row">
+				        	<!-- 文字資訊 -->
+				        	<div class="col-sm-8">
+					        	<div class="form-group"><!-- 基本表单 -->
+					        		<label for="title">標題</label>
+					        		<input id="title" class="form-control" type="text" placeholder="輸入標題">
+					        	</div>
+								<div class="form-row"><!-- 兩列並排顯示 -->
+									<div class="form-group col-md-6">
+						        		<label for="category">分類</label>
+						        		<input id="category" class="form-control" type="text" placeholder="輸入分類">
+						        	</div>
+						        	<div class="form-group col-md-6">
+						        		<label for="unit">單位</label>
+						        		<input id="unit" class="form-control" type="unit" placeholder="輸入單位">
+						        	</div>
+								</div>
+								<div class="form-row"><!-- 兩列並排顯示 -->
+									<div class="form-group col-md-6">
+						        		<label for="origin_price">原價</label>
+						        		<input id="origin_price" class="form-control" type="number" placeholder="輸入原價">
+						        	</div>
+						        	<div class="form-group col-md-6">
+						        		<label for="price">售價</label>
+						        		<input id="price" class="form-control" type="number" placeholder="輸入售價">
+						        	</div>
+								</div>
+								<hr>
+								<div class="form-group">
+						        	<label for="description">產品描述</label>
+						        	<textarea id="description" class="form-control" type="text" placeholder="輸入產品描述"></textarea>
+						        </div>
+						        <div class="form-group">
+						        	<label for="content">說明內容</label>
+						        	<textarea id="content" class="form-control" type="text" placeholder="輸入說明內容"></textarea>
+						        </div>
+
+						        <div class="form-group">
+						        	<div class="form-check">
+						        		<input id="is_launched" class="form-check-input" type="checkbox">
+						        		<label class="form-check-label" for="is_launched">是否上架</label>
+						        	</div>
+						        </div>
+					        </div>
+							<!-- 圖片 -->
+							<div class="col-sm-4">
+					        	<div class="form-group">
+						        	<label for="imageUrl">圖片連結</label>
+						        	<input id="imageUrl" class="form-control" type="text" placeholder="輸入圖片連結">
+						        </div>
+						        <img class="img-fluid" src="#">
+					        </div>
+			        	</form>
+			        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+			        <button type="button" class="btn btn-primary">確認新增</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- 刪除產品 -->
+			<div class="modal fade" id="delproductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header bg-danger text-white">
+			        <h5 class="modal-title" id="exampleModalLabel">刪除產品</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true" class="text-white">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <div>
+			        	<p>是否刪除 <strong>123</strong> 產品?</p>
+			        	<strong class="text-danger">(刪除後將無法恢復)</strong>
+			        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+			        <button type="button" class="btn btn-danger">確認刪除</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</article>
+	</main>
+	
+
+	<!-- CDN -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
