@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Week4 - 產品管理頁面</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<main id="app" class="container">
+		<article>
+			<div class="mt-4">
+				<button class="btn btn-primary" @click="openModal('newProduct')">建立新產品</button>
+			</div>
+			<div class="mt-4">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>分類</th>
+							<th>產品名稱</th>
+							<th>原價</th>
+							<th>售價</th>
+							<th>是否上架</th>
+							<th>編輯</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, index) in products" :key="item.id">
+							<td>{{ item.category }}</td>
+							<td>{{ item.title }}</td>
+							<td>$ {{ item.origin_price }}</td>
+							<td>$ {{ item.price }}</td>
+							<td>
+								<span v-if="item.launched" class="text-success">已上架</span>
+								<span v-else>未上架</span>
+							</td>
+							<td>
+								<!-- <div class="btn-group"> -->
+								<div>
+									<button class="btn btn-outline-primary"
+									 @click="openModal('editProduct',item, index)"
+									 :disabled="loadingBtn === item.id">編輯
+									</button>
+									<button class="btn btn-outline-danger" @click="openModal('deleteProduct', item, index)">刪除</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+      		</div>
+      		<!-- 分頁元件：前內(pages)後外 -->
+			<pagination 
+				:pages="pagination" 
+				@update="getProducts"><!-- 觸發更新事件-->
+			</pagination>
+			<!-- Modal -->
+			<!-- 產品資訊 -->
+			<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<modal 
+					:api="api" 
+					:edit-product="editProduct"
+					:status="status"
+					@update="getProducts">
+				</modal>
+			</div>
+
+			<!-- 刪除產品 -->
+			<div class="modal fade" id="delproductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<del-modal 
+					:api="api" 
+					:edit-product="editProduct"
+					@update="getProducts"> <!-- 觸發更新事件-->
+				</del-modal>
+			</div>
+		</article>
+	</main>
+	
+
+	<!-- CDN -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="main.js" type="module"></script> 
+  <!-- 如沒有加入 type="module" 會使 import 無法執行-->
+</body>
+</html>
